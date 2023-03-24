@@ -1,0 +1,7 @@
+.env
+.pytest_cache
+venv
+.coverage
+__pycache__
+**/__pycache__
+.vscode
