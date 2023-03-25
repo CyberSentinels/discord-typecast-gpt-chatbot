@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:bullseye
+FROM python:3.11.2-bullseye
 
 # Set the working directory to /app
 WORKDIR /
