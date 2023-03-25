@@ -9,7 +9,7 @@ This bot is a Discord-based support agent. It provides helpful responses to user
 ## How to run the bot
 ### Using docker
 ```bash
-docker run -td --name scenario-bot -e DISCORD_BOT_APP_TOKEN="INSERT YOUR BOT TOKEN HERE" -e OPENAI_API_KEY="INSERT YOUR OPENAI API KEY HERE" simeononsecurity/discord-typecast-gpt-chatbot:latest
+docker run -td --name cyberchatbot -e DISCORD_BOT_APP_TOKEN="INSERT YOUR BOT TOKEN HERE" -e OPENAI_API_KEY="INSERT YOUR OPENAI API KEY HERE" simeononsecurity/discord-typecast-gpt-chatbot:latest
 ```
 ### How to run the bot manually
 To get started with running this repository, you need to perform the following steps:
