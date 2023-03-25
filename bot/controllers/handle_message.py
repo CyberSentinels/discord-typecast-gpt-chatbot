@@ -41,7 +41,7 @@ async def handle_message(message):
         chat_completion_response = get_chat_completion(openai, chatml_messages)
     except Exception as e:
         raise e
-    
+
     # take only the part of the response we care about
     content = chat_completion_response.choices[0].message.content.strip()
 
@@ -74,6 +74,7 @@ def debug(system_content, user_content, discord_response_content):
     print('---------------------------')
     print(user_content.as_str())
     print('')
+    print('---------------------------')
     print('---------------------------')
     print('CHAT HISTORY LENGTH:')
     print('---------------------------')

@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.models.bot import BotStatus
+from example_http_server.models.bot import BotStatus
 
 router = APIRouter()
 

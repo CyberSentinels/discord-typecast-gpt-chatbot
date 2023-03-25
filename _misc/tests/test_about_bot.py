@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
-from app.main import app
-from app.models.bot import BotStatus
+from example_http_server.main import app
+from example_http_server.models.bot import BotStatus
 
 client = TestClient(app)
 
