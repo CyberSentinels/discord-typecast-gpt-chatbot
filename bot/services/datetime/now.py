@@ -2,6 +2,9 @@ from datetime import datetime
 from locale import setlocale, LC_ALL
 from pytz import timezone
 
+import locale
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+
 def now_us():
     setlocale(LC_ALL, 'en_US.UTF-8')
     now = datetime.now()
