@@ -57,11 +57,8 @@ async def handle_message(message):
         debug(system_content, user_content, discord_response_content)
         await message.channel.send(content)
 
-    # send response to discord channel
-    await message.channel.send(content=content)
 
-
-def debug(system_content, user_content, discord_response_content):
+def debug(system_content, user_content, discord_response_content, chat_completion_response):
     print('DEBUG START....')
     print('')
     print('---------------------------')
@@ -86,9 +83,19 @@ def debug(system_content, user_content, discord_response_content):
     print(user_content.get_time_until_chat_history_expires())
     print('')
     print('---------------------------')
-    print('CHAT COMPLETION RESPONSE:')
+    print('CHAT HISTORY:')
+    print('---------------------------')
+    print(user_content.get_chat_history())
+    print('')
+    print('---------------------------')
+    print('DISCORD RESPONSE CONTENT:')
     print('---------------------------')
     print(discord_response_content)
+    print('')
+    print('---------------------------')
+    print('CHAT COMPLETION RESPONSE:')
+    print('---------------------------')
+    print(chat_completion_response)
     print('')
     print('---------------------------')
     print('...DEBUG END')
