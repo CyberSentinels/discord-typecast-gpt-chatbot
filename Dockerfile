@@ -7,12 +7,19 @@ WORKDIR /
 # Copy the current directory contents into the container at /
 COPY . /
 
-RUN apt-get update && apt-get -y full-upgrade -y && apt-get install -y python3-setuptools python3-dev python3-pip build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev inetutils-ping gcc libpq-dev python3-venv python3-wheel python3-httptools
+# Update packages and install required system dependencies
+RUN apt-get update && \
+    apt-get -y full-upgrade && \
+    apt-get install -y python3-setuptools python3-dev python3-pip build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev inetutils-ping gcc libpq-dev python3-venv python3-wheel python3-httptools
+
+# Create a virtual environment and activate it
+RUN python -m venv myenv
+ENV PATH="/myenv/bin:${PATH}"
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --upgrade pip && \
-pip install wheel && \
-pip install -r requirements.txt
+    pip install wheel && \
+    pip install -r requirements.txt
 
 # Set the environment variable for the bot token
 ENV DISCORD_BOT_APP_TOKEN=${DISCORD_BOT_APP_TOKEN}
