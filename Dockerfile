@@ -25,4 +25,4 @@ ENV DISCORD_BOT_APP_TOKEN=${DISCORD_BOT_APP_TOKEN}
 ENV OPENAI_API_KEY=${OPENAI_API_KEY}
 
 # Run app.py when the container launches
-CMD ["python", "main.py"]
+CMD ["python", "./bot/main.py"]
