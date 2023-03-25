@@ -54,7 +54,7 @@ async def handle_message(message):
 
     while responses:
         discord_response_content = responses.pop(0).strip()
-        debug(system_content, user_content, discord_response_content)
+        debug(system_content, user_content, discord_response_content, chat_completion_response)
         await message.channel.send(content)
 
 

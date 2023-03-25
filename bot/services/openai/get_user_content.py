@@ -40,8 +40,9 @@ class UserContent:
     def append_to_chat_history(self, value):
         author = self.discord_msg_author_name
         if (author in self.chat_history):
-            if (self.chat_history_lifetime > CHAT_HISTORY_TTL):
-                self.chat_history_lifetime
+            if (self.get_time_until_chat_history_expires() < 0):
+                self.chat_history[author] = []
+                self.chat_history_lifetime = time.time()
             if (len(self.chat_history[author]) == MAX_CHAT_HISTORY_LENGTH):
                 self.chat_history[author].pop(0)
             self.chat_history[author].append(value)
