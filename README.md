@@ -1,6 +1,17 @@
 # discord-typecast-gpt-chatbot
 
+This bot is a Discord-based support agent. It provides helpful responses to user queries, assists with server-related questions, and directs users to relevant resources. The bot is friendly, knowledgeable, and maintains a positive environment. It can also share opinions, preferences, and recommendations related to various topics, creating engaging and informative interactions with users.
+
+[See the bot in action](https://discord.io/cybersentinels)
+
+![](https://discord.io/cybersentinels/badge)
+
 ## How to run the bot
+### Using docker
+```bash
+docker run -td --name scenario-bot -e DISCORD_BOT_APP_TOKEN="INSERT YOUR BOT TOKEN HERE" -e OPENAI_API_KEY="INSERT YOUR OPENAI API KEY HERE" simeononsecurity/discord-typecast-gpt-chatbot:latest
+```
+### How to run the bot manually
 To get started with running this repository, you need to perform the following steps:
 
 1. Clone this repository and change into product root
@@ -37,8 +48,7 @@ pip install -r requirements.txt
 ```sh
 pip freeze > requirements.txt
 ```
-
-### Architecture
+## Architecture
 
 ```text
 ./
