@@ -13,7 +13,8 @@ This bot is a Discord-based support agent. It provides helpful responses to user
 ```bash
 docker run -td --name cyberchatbot -e DISCORD_BOT_APP_TOKEN="INSERT YOUR BOT TOKEN HERE" -e OPENAI_API_KEY="INSERT YOUR OPENAI API KEY HERE" simeononsecurity/discord-typecast-gpt-chatbot:latest
 ```
-### How to run the bot manually
+### How to run the bot manually using python
+
 To get started with running this repository, you need to perform the following steps:
 
 1. Clone this repository and change into product root
@@ -50,6 +51,13 @@ pip install -r requirements.txt
 ```bash
 pip freeze > requirements.txt
 ```
+#### How to fix locales issue
+```bash
+sudo apt-get install locales -y
+sudo locale-gen en_US.UTF-8 en_CA.UTF-8
+sudo update-locale
+```
+
 ## Architecture
 
 ```text

@@ -16,6 +16,10 @@ RUN apt-get update && \
     apt-get -y full-upgrade && \
     apt-get install -y locales python3-setuptools python3-dev python3-pip build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev inetutils-ping gcc libpq-dev python3-venv python3-wheel python3-httptools
 
+# Set up the required locales
+RUN locale-gen en_US.UTF-8 en_CA.UTF-8 && \
+update-locale
+
 # Set environment variables for the desired locale
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US:en
