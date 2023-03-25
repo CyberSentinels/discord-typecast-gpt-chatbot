@@ -12,7 +12,7 @@ def create_chatml_messages(system_content, user_content):
     return chatml_messages
 
 
-def get_chat_completion(openai, chatml_messages, user_content):
+def get_chat_completion(openai, chatml_messages):
     try:
         response = openai.ChatCompletion.create(
             model='gpt-3.5-turbo',

@@ -38,11 +38,7 @@ async def handle_message(message):
 
     # construct discord channel message, from chat completion response
     try:
-        chat_completion_response = get_chat_completion(
-            openai,
-            chatml_messages,
-            user_content
-        )
+        chat_completion_response = get_chat_completion(openai, chatml_messages)
     except Exception as e:
         raise e
 
