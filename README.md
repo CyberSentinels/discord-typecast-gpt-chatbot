@@ -1,12 +1,13 @@
 # compassionate conversationalist bot
 
-## How to run this server locally
+## How to run the bot
 To get started with running this repository, you need to perform the following steps:
 
-1. Clone the repository from GitHub using 
+1. Clone this repository and change into product root
 
 ```sh
-git clone REPO_GIT_URL
+git clone URL
+cd repo_name
 ```
 
 2. Create a new virtual environment using `venv`:
@@ -20,21 +21,14 @@ source venv/bin/activate
 ```
 
 4. Install the dependencies listed in `requirements.txt`:
+   
 ```sh
 pip install -r requirements.txt
 ```
 
-5. Start the FastAPI app:
+5. If you install new dependencies with `pip install`, be sure to regenerate requirements.txt with:
+
 ```sh
-uvicorn app.main:app --reload
+pip freeze > requirements.txt
 ```
 
-> Don't forget to activate the virtual environment each time you work on the project in a new terminal session by running the activate command again.
-
-After these steps, you should be able to access the app by visiting http://localhost:8000 in your web browser.
-
-## Testing
-```sh
-# run all tests in the tests/ folder
-pytest --cov=app tests/
-```
