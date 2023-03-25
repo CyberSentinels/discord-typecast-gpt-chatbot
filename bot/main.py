@@ -1,7 +1,7 @@
 import os
 import discord
 from dotenv import load_dotenv
-from controllers.handle_message import handle_message
+from controllers.message.handle_message import handle_message
 load_dotenv()
 
 intents = discord.Intents.default()
