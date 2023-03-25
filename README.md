@@ -18,36 +18,36 @@ To get started with running this repository, you need to perform the following s
 
 1. Clone this repository and change into product root
 
-```sh
+```bash
 git clone URL
 cd repo_name
 ```
 2. create an `.env` file in the project root (it will be `.gitignored`) and paste your discord bot token and openai token:
 
-```sh
+```env
 DISCORD_BOT_APP_TOKEN=PASTE_DISCORD_TOKEN_HERE
 OPENAI_API_KEY=PASTE_OPENAI_API_TOKEN_HERE
 ```
 
 3. Create a new virtual environment using `venv`:
-```sh
+```bash
 python3 -m venv venv
 ```
 
 4. Activate the virtual environment:
-```sh
+```bash
 source venv/bin/activate
 ```
 
 5. Install the dependencies listed in `requirements.txt`:
    
-```sh
+```bash
 pip install -r requirements.txt
 ```
 
 6. If you install new dependencies with `pip install`, be sure to regenerate requirements.txt with:
 
-```sh
+```bash
 pip freeze > requirements.txt
 ```
 ## Architecture
