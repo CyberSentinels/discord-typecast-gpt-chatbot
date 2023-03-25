@@ -1,6 +1,5 @@
 import re
 
-
 def repl_id_with_username(matched_id, msg_mentions):
     for mention in msg_mentions:
         if (str(mention.id) == str(matched_id)):
