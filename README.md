@@ -32,3 +32,27 @@ pip install -r requirements.txt
 pip freeze > requirements.txt
 ```
 
+### Architecture
+
+```text
+./
+project root
+
+bot/
+discord bot's source
+
+bot/main.py:
+This is the main entry point for your application
+
+bot/controllers/
+This directory contains code that controls the main program and provides inputs into services
+
+bot/services/
+This directory contains code that do small, specific tasks
+
+requirements.txt:
+This file lists the dependencies required for your application to run
+
+_misc/
+example HTTP webserver written in python
+```
