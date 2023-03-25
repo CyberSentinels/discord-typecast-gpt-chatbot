@@ -11,7 +11,6 @@ RUN apt-get update && apt-get -y full-upgrade -y && apt-get install -y python3-s
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --upgrade pip && \
-pip uninstall wheel && \
 pip install wheel && \
 pip install httptools && \
 pip install yarl==1.8.2 && \
