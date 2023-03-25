@@ -11,6 +11,8 @@ RUN apt-get update && apt-get -y full-upgrade -y && apt-get install -y python3-s
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --upgrade pip && \
+pip install httptools && \
+pip install yarl==1.8.2 && \
 pip install -r requirements.txt
 
 # Set the environment variable for the bot token
