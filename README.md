@@ -9,7 +9,7 @@ To get started with running this repository, you need to perform the following s
 git clone URL
 cd repo_name
 ```
-2. create an `.env` file in the project root (it will be `.gitignored` so you don't commit your code) and paste your discord bot token and openai token:
+2. create an `.env` file in the project root (it will be `.gitignored`) and paste your discord bot token and openai token:
 
 ```sh
 DISCORD_BOT_APP_TOKEN=PASTE_DISCORD_TOKEN_HERE
