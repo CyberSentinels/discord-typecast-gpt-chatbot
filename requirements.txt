@@ -2,7 +2,7 @@ attr==0.3.2
 attrs==21.2.0
 brotli==1.0.9
 ConfigParser==5.3.0
-cryptography==3.4.8
+cryptography==39.0.1
 Cython==0.29.33
 dl==0.1.0
 docutils==0.19
