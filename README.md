@@ -1,4 +1,4 @@
-# compassionate conversationalist bot
+# discord-typecast-gpt-chatbot
 
 ## How to run the bot
 To get started with running this repository, you need to perform the following steps:
