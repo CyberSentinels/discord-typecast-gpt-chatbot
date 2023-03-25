@@ -48,7 +48,7 @@ class UserContent:
         else:
             self.chat_history[self.discord_msg_author_name] = [value]
 
-    def format_chat_history(self):
+    def chat_history_as_str(self):
         return "\n".join(self.chat_history[self.discord_msg_author_name])
 
     def append_to_current_chat(self, value):
@@ -116,7 +116,7 @@ also i'm bored.
 {self.user_prefix}: yo <@{self.discord_bot_name}> why is the sky blue?
 {self.assistant_prefix}: As white light passes through our atmosphere, tiny air molecules cause it to 'scatter'. The scattering caused by these tiny air molecules (known as Rayleigh scattering) increases as the wavelength of light decreases. Violet and blue light have the shortest wavelengths and red light has the longest.
 
-{self.format_chat_history()}
+{self.chat_history_as_str()}
 {self.current_chat}
 """
 
