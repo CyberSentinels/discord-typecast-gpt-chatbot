@@ -1,7 +1,7 @@
 import re
 
 
-def __repl_id_with_username(matched_id, msg_mentions):
+def repl_id_with_username(matched_id, msg_mentions):
     for mention in msg_mentions:
         if (str(mention.id) == str(matched_id)):
             return f'<@{mention.name}>'
@@ -9,7 +9,7 @@ def __repl_id_with_username(matched_id, msg_mentions):
 
 
 def repl_mention_ids_with_usernames(msg_content, msg_mentions):
-    return re.sub(r'<@(\d+)>', lambda g: __repl_id_with_username(g[1], msg_mentions), msg_content)
+    return re.sub(r'<@(\d+)>', lambda g: repl_id_with_username(g[1], msg_mentions), msg_content)
 
 # run with pytest
 class TestReplMentionIdsWithUsernames:
