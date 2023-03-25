@@ -36,12 +36,12 @@ async def handle_message(message):
     chatml_messages = create_chatml_messages(system_content, user_content)
     openai = create_openai_client()
 
-    # construct discord channel message, from chat completion response
+    # try chat completion request
     try:
         chat_completion_response = get_chat_completion(openai, chatml_messages)
     except Exception as e:
         raise e
-
+    
     # take only the part of the response we care about
     content = chat_completion_response.choices[0].message.content.strip()
 
