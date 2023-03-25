@@ -5,6 +5,6 @@ class UnknownBotMention:
 
 def get_bot_mention(mentions):
     for mention in mentions:
-        if (mention.bot):
+        if mention.bot:
             return mention
     return UnknownBotMention()

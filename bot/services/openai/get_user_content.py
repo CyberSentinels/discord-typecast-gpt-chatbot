@@ -6,7 +6,16 @@ CHAT_HISTORY_TTL = 600
 
 
 class UserContent:
-    def __init__(self, discord_msg, discord_msg_author_name, discord_bot_name, date, date_toronto, current_chat=None, chat_history=None):
+    def __init__(
+        self,
+        discord_msg,
+        discord_msg_author_name,
+        discord_bot_name,
+        date,
+        date_toronto,
+        current_chat=None,
+        chat_history=None,
+    ):
         self.discord_msg = discord_msg
         self.discord_msg_author_name = discord_msg_author_name
         self.discord_bot_name = discord_bot_name
@@ -14,10 +23,12 @@ class UserContent:
         self.date_toronto = date_toronto
         self.user_prefix = f"[{date}] {discord_msg_author_name}"
         self.assistant_prefix = f"[{date}] {discord_bot_name}"
-        self.chat_history = self.default_chat_history(
-        ) if chat_history is None else chat_history
-        self.current_chat = self.default_current_chat(
-        ) if current_chat is None else current_chat
+        self.chat_history = (
+            self.default_chat_history() if chat_history is None else chat_history
+        )
+        self.current_chat = (
+            self.default_current_chat() if current_chat is None else current_chat
+        )
         self.chat_history_lifetime = time.time()
 
     def default_current_chat(self):
@@ -39,11 +50,11 @@ class UserContent:
 
     def append_to_chat_history(self, value):
         author = self.discord_msg_author_name
-        if (author in self.chat_history):
-            if (self.get_time_until_chat_history_expires() < 0):
+        if author in self.chat_history:
+            if self.get_time_until_chat_history_expires() < 0:
                 self.chat_history[author] = []
                 self.chat_history_lifetime = time.time()
-            if (len(self.chat_history[author]) == MAX_CHAT_HISTORY_LENGTH):
+            if len(self.chat_history[author]) == MAX_CHAT_HISTORY_LENGTH:
                 self.chat_history[author].pop(0)
             self.chat_history[author].append(value)
         else:
@@ -125,15 +136,25 @@ also i'm bored.
 user_content = None
 
 
-def get_user_content(discord_msg, discord_msg_author_name, discord_bot_name, date, date_toronto, current_chat=None, chat_history=None):
+def get_user_content(
+    discord_msg,
+    discord_msg_author_name,
+    discord_bot_name,
+    date,
+    date_toronto,
+    current_chat=None,
+    chat_history=None,
+):
     # provide access to singleton
     global user_content
-    if (user_content is None):
-        user_content = UserContent(discord_msg,
-                                   discord_msg_author_name,
-                                   discord_bot_name,
-                                   date,
-                                   date_toronto,
-                                   current_chat,
-                                   chat_history)
+    if user_content is None:
+        user_content = UserContent(
+            discord_msg,
+            discord_msg_author_name,
+            discord_bot_name,
+            date,
+            date_toronto,
+            current_chat,
+            chat_history,
+        )
     return user_content

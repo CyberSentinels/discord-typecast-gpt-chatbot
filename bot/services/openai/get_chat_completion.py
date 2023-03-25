@@ -1,13 +1,7 @@
 def create_chatml_messages(system_content, user_content):
     chatml_messages = [
-        {
-            "role": "system",
-            "content": system_content.as_str()
-        },
-        {
-            "role": "user",
-            "content": user_content.as_str()
-        }
+        {"role": "system", "content": system_content.as_str()},
+        {"role": "user", "content": user_content.as_str()},
     ]
     return chatml_messages
 
@@ -15,7 +9,7 @@ def create_chatml_messages(system_content, user_content):
 def get_chat_completion(openai, chatml_messages):
     try:
         response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo',
+            model="gpt-3.5-turbo",
             messages=chatml_messages,
             max_tokens=128,
             temperature=1,
@@ -26,5 +20,5 @@ def get_chat_completion(openai, chatml_messages):
         )
         return response
     except Exception as e:
-        print('error in get_chat_completion')
+        print("error in get_chat_completion")
         raise e

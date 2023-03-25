@@ -14,17 +14,20 @@ except Exception as e:
 DISCORD_BOT_APP_TOKEN = os.getenv("DISCORD_BOT_APP_TOKEN")
 
 if not DISCORD_BOT_APP_TOKEN:
-    raise ValueError("DISCORD_BOT_APP_TOKEN not found in environment. Please set it in your .env file, as an environment variable, or another configuration method.")
+    raise ValueError(
+        "DISCORD_BOT_APP_TOKEN not found in environment. Please set it in your .env file, as an environment variable, or another configuration method."
+    )
 
 # setup the discord.py client and intents
 intents = discord.Intents.all()
 intents.message_content = True
 client = commands.Bot(command_prefix=["!", "/"], intents=intents)
 
+
 @client.event
 async def on_ready():
     # Print a message indicating that the bot is logged in and ready
-    print(f'We have logged in as {client.user}')
+    print(f"We have logged in as {client.user}")
     print("\nLogged in as:")
     print(" Username", client.user.name)
     print(" User ID", client.user.id)
@@ -51,6 +54,7 @@ async def on_ready():
     )
     await client.change_presence(activity=activity, status=Status.online)
 
+
 @client.event
 async def on_message(message):
     if client.user.mentioned_in(message):
@@ -62,9 +66,10 @@ async def on_message(message):
                     type="rich",
                     title="Discord bot error",
                     description=f"{e}",
-                    color=discord.Colour.red()
+                    color=discord.Colour.red(),
                 )
             )
+
 
 try:
     client.run(DISCORD_BOT_APP_TOKEN)
