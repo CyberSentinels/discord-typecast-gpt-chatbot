@@ -11,12 +11,12 @@ def get_chat_completion(openai, chatml_messages):
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=chatml_messages,
-            max_tokens=128,
-            temperature=1,
+            max_tokens=256,
+            temperature=0.8,
             top_p=1,
             n=1,
-            presence_penalty=0,
-            frequency_penalty=0,
+            presence_penalty=0.2,
+            frequency_penalty=0.2,
         )
         return response
     except Exception as e:
