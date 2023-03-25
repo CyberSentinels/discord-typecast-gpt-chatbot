@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.11.2-bullseye
+FROM python:bullseye
 
 # Set the working directory to /app
 WORKDIR /
@@ -11,6 +11,7 @@ RUN apt-get update && apt-get -y full-upgrade -y && apt-get install -y python3-s
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --upgrade pip && \
+pip uninstall wheel && \
 pip install wheel && \
 pip install httptools && \
 pip install yarl==1.8.2 && \
