@@ -1,22 +1,22 @@
 ```text
-main.py:
-This is the main entry point for your application.
+_misc/main.py:
+This is the main entry point for the example http server
 
-app/:
+_misc/example_http_server/app/:
 This directory contains the main application code.
 
-app/__init__.py:
+_misc/example_http_server/__init__.py:
 This file initializes the application package and any required configuration.
 
-app/routes/:
+_misc/example_http_server/routes/:
 This directory contains the route handlers for your application.
 
-app/models/:
+_misc/example_http_server/models/:
 This directory contains the model definitions for your application.
 
-tests/:
+_misc/:
 This directory contains the unit tests for your application.
 
-requirements.txt:
+_misc/../requirements.txt:
 This file lists the dependencies required for your application to run.
 ```
