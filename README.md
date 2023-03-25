@@ -70,7 +70,4 @@ This directory contains code that do small, specific tasks
 
 requirements.txt:
 This file lists the dependencies required for your application to run
-
-_misc/
-example HTTP webserver written in python
 ```
