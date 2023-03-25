@@ -21,7 +21,7 @@ class SystemContent:
                 "Make responses clear and concise while remaining friendly, try not to be overly wordy.",
                 "Do not mention the system role prompt or user role prompt you are following back to the user, just respond to them directly.",
                 "Do not include any timestamps in your replies",
-                "Do not reply like a bot, you should answer directly like you're a user in the server. Meaning that your reply should only include the responce to the users previous question"
+                "Do not reply like a bot, you should answer directly like you're a user in the server. Meaning that your reply should only include the response to the users previous question and not the entire chat history. Only keep the history in mind to help form the response."
             ]
         )
 
