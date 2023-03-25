@@ -1,6 +1,5 @@
 def batch_and_format_for_discord(response):
-    # precondition: chatgpt chat completion response is:
-    #   content = chat_completion_response.choices[0].message.content.strip()
+    # precondition: response is chat_completion_response.choices[0].message.content.strip()
 
     # Discord character limit is 2000
     # We'll batch responses into multiple messages if we go over
