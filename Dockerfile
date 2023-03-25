@@ -18,7 +18,6 @@ ENV PATH="/myenv/bin:${PATH}"
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --upgrade pip && \
-    pip install wheel && \
     pip install -r requirements.txt
 
 # Set the environment variable for the bot token
