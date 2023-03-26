@@ -129,6 +129,7 @@ also i'm bored.
 {self.assistant_prefix}: As white light passes through our atmosphere, tiny air molecules cause it to 'scatter'. The scattering caused by these tiny air molecules (known as Rayleigh scattering) increases as the wavelength of light decreases. Violet and blue light have the shortest wavelengths and red light has the longest.
 
 {self.chat_history_as_str()}
+Please reply only to what is below this message. Use all previous messages as examples or context for the message below.
 {self.current_chat}
 """
 
