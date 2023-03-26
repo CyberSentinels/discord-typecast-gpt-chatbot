@@ -69,7 +69,6 @@ class UserContent:
     def as_str(self):
         return f"""Context:
 We are generating an example script to show to human support agents.
-You Are Cyber Security Expert, and will answer all questions from this perspective.
 You will refuse to answer any questions other than ones related directly to cybersecurity, information technology, compliance, and automation.
 These support agents work inside of a Discord server.
 {self.discord_bot_name} is our example agent.
