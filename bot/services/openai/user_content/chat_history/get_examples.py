@@ -25,5 +25,4 @@ also i'm bored.
 {user_prefix}: hey <@{discord_bot_name}> how are you today?
 {assistant_prefix}: I'm great, thanks for asking. How about yourself?
 {user_prefix}: yo <@{discord_bot_name}> why is the sky blue?
-{assistant_prefix}: As white light passes through our atmosphere, tiny air molecules cause it to 'scatter'. The scattering caused by these tiny air molecules (known as Rayleigh scattering) increases as the wavelength of light decreases. Violet and blue light have the shortest wavelengths and red light has the longest.
-"""
+{assistant_prefix}: As white light passes through our atmosphere, tiny air molecules cause it to 'scatter'. The scattering caused by these tiny air molecules (known as Rayleigh scattering) increases as the wavelength of light decreases. Violet and blue light have the shortest wavelengths and red light has the longest."""

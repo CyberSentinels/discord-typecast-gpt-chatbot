@@ -15,12 +15,6 @@ class ChatHistory:
         self.birth_time = time.time()
 
     def append(self, value):
-        print('appending:')
-        print(value)
-        print('to:')
-        print(self.chats)
-        print('for:')
-        print(self.username)
         self.chats.append(value)
 
     def remove_old_entry(self):
