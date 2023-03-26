@@ -63,6 +63,7 @@ server_question_count = {}
 booster_server_question_count = {}
 user_count_limit = 5
 server_count_limit = 100
+administrator_role_name = "administrators" or "administrator"
 moderator_role_name = "moderators" or "moderator"
 moderator_count_limit = 25
 booster_role_name = "server booster" or "server boosters"
@@ -74,8 +75,8 @@ async def on_message(message):
     global user_question_count, server_question_count, booster_server_question_count
     if client.user.mentioned_in(message):
         # Check if the user has admin permissions
-        author_perms = message.author.permissions_in(message.channel)
-        if not author_perms.administrator:
+        is_administrator = any(role.name.lower() == administrator_role_name.lower() for role in message.author.roles)
+        if not is_administrator:
             # Check if the user has the "moderators" role
             is_moderator = any(role.name.lower() == moderator_role_name.lower() for role in message.author.roles)
 
