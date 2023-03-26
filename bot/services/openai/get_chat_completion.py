@@ -2,11 +2,11 @@ def create_chatml_messages(system_content, user_content):
     chatml_messages = [
         {
             "role": "system",
-            "content": system_content.as_str()
+            "content": system_content
         },
         {
             "role": "user",
-            "content": user_content.as_str()
+            "content": user_content
         }
     ]
     return chatml_messages

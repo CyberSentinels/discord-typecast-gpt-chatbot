@@ -1,16 +1,17 @@
 from services.datetime.now import now_ca, now_us
 from services.discord.repl_mention_ids_with_usernames import repl_mention_ids_with_usernames
 from services.discord.get_bot_mention import get_bot_mention
+from services.openai.user_content.prefix_helpers.get_current_chat_prefix import get_current_chat_prefix
+from services.openai.user_content.chat_history.get_chat_history import get_chat_history
 from services.openai.get_system_content import get_system_content
-from services.openai.get_user_content import get_user_content
+from services.openai.user_content.get_user_content import get_user_content
 from services.openai.batch_and_format_for_discord import batch_and_format_for_discord
 from services.openai.get_chat_completion import create_chatml_messages, get_chat_completion
 from services.openai.create_openai_client import create_openai_client
 
-
 async def handle_message(message):
     # extract discord message data for openai chat completion
-    content = message.content
+    orig_content = message.content
     mentions = message.mentions
     discord_bot_mention = get_bot_mention(mentions)
     discord_bot_name = discord_bot_mention.name
@@ -18,7 +19,7 @@ async def handle_message(message):
 
     # transform discord message data for openai chat completion
     discord_msg_content_with_usernames = repl_mention_ids_with_usernames(
-        content,
+        orig_content,
         mentions
     )
 
@@ -43,60 +44,27 @@ async def handle_message(message):
         raise e
 
     # take only the part of the response we care about
-    content = chat_completion_response.choices[0].message.content.strip()
+    chatgpt_content = chat_completion_response.choices[0].message.content.strip(
+    )
 
-    # update current chat and chat history
-    user_content.append_to_current_chat(content)
-    user_content.append_to_chat_history(content)
+    # update chat history
+    chat_history_for_this_user = get_chat_history(discord_msg_author_name)
+    if (chat_history_for_this_user.get_time_until_expires() <= 0):
+        chat_history_for_this_user.reset()
+    if (chat_history_for_this_user.is_full()):
+        chat_history_for_this_user.remove_old_entry()
+    chat_prefix = get_current_chat_prefix(
+        discord_msg_author_name,
+        discord_bot_name,
+        discord_msg_content_with_usernames,
+        date
+    )
+    new_chat_entry = chat_prefix + chatgpt_content
+    chat_history_for_this_user.append(new_chat_entry)
 
     # batch responses for discord
-    responses = batch_and_format_for_discord(content)
+    responses = batch_and_format_for_discord(chatgpt_content)
 
     while responses:
         discord_response_content = responses.pop(0).strip()
-        debug(system_content, user_content, discord_response_content, chat_completion_response)
-        await message.channel.send(content)
-
-
-def debug(system_content, user_content, discord_response_content, chat_completion_response):
-    print('DEBUG START....')
-    print('')
-    print('---------------------------')
-    print('SYSTEM CONTENT:')
-    print('---------------------------')
-    print(system_content.as_str())
-    print('')
-    print('---------------------------')
-    print('USER CONTENT:')
-    print('---------------------------')
-    print(user_content.as_str())
-    print('')
-    print('---------------------------')
-    print('---------------------------')
-    print('CHAT HISTORY LENGTH:')
-    print('---------------------------')
-    print(len(user_content.get_chat_history()))
-    print('')
-    print('---------------------------')
-    print('TIME UNTIL CHAT HISTORY EXPIRES:')
-    print('---------------------------')
-    print(user_content.get_time_until_chat_history_expires())
-    print('')
-    print('---------------------------')
-    print('CHAT HISTORY:')
-    print('---------------------------')
-    print(user_content.get_chat_history())
-    print('')
-    print('---------------------------')
-    print('DISCORD RESPONSE CONTENT:')
-    print('---------------------------')
-    print(discord_response_content)
-    print('')
-    print('---------------------------')
-    print('CHAT COMPLETION RESPONSE:')
-    print('---------------------------')
-    print(chat_completion_response)
-    print('')
-    print('---------------------------')
-    print('...DEBUG END')
-    print('')
+        await message.channel.send(discord_response_content)
