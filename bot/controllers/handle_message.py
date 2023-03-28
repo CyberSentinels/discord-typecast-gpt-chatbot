@@ -1,3 +1,4 @@
+import time
 from services.datetime.now import now_ca, now_us
 from services.discord.repl_mention_ids_with_usernames import repl_mention_ids_with_usernames
 from services.discord.get_bot_mention import get_bot_mention
@@ -8,6 +9,7 @@ from services.openai.user_content.get_user_content import get_user_content
 from services.openai.batch_and_format_for_discord import batch_and_format_for_discord
 from services.openai.get_chat_completion import create_chatml_messages, get_chat_completion
 from services.openai.create_openai_client import create_openai_client
+
 
 async def handle_message(message):
     # extract discord message data for openai chat completion
@@ -38,10 +40,21 @@ async def handle_message(message):
     openai = create_openai_client()
 
     # try chat completion request
-    try:
-        chat_completion_response = get_chat_completion(openai, chatml_messages)
-    except Exception as e:
-        raise e
+
+    max_retries = 3
+    delay = 5
+    while True:
+        try:
+            chat_completion_response = get_chat_completion(
+                openai, chatml_messages)
+        except Exception as e:
+            if max_retries == 0:
+                print("Maximum retries exceeded. Raising exception.")
+                raise e
+            await message.channel.send(f"Request failed. Retrying in {delay} seconds...")
+            time.sleep(delay)
+            max_retries -= 1
+            delay += 10
 
     # take only the part of the response we care about
     chatgpt_content = chat_completion_response.choices[0].message.content.strip(
