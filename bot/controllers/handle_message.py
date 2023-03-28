@@ -40,7 +40,6 @@ async def handle_message(message):
     openai = create_openai_client()
 
     # try chat completion request
-
     max_retries = 3
     delay = 5
     while True:
