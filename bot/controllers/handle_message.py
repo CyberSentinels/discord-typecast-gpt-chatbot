@@ -42,10 +42,12 @@ async def handle_message(message):
     # try chat completion request
     max_retries = 3
     delay = 5
-    while True:
+    success = False
+    while not success:
         try:
             chat_completion_response = get_chat_completion(
                 openai, chatml_messages)
+            success = True
         except Exception as e:
             if max_retries == 0:
                 print("Maximum retries exceeded. Raising exception.")
