@@ -148,6 +148,7 @@ async def reset_question_counts():
     global user_question_count, server_question_count
     user_question_count = {}
     server_question_count = {}
+    booster_server_question_count = {}
     print("Question counts reset at", datetime.datetime.now())
 
 # Schedule the loop to start at the next midnight
