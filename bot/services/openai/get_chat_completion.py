@@ -15,7 +15,7 @@ def create_chatml_messages(system_content, user_content):
 def get_chat_completion(openai, chatml_messages):
     try:
         response = openai.ChatCompletion.create(
-            model="gpt-3.5-turbof",
+            model="gpt-3.5-turbo",
             messages=chatml_messages,
             max_tokens=256,
             temperature=0.8,
