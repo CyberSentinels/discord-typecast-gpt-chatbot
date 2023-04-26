@@ -17,7 +17,7 @@ def get_chat_completion(openai, chatml_messages):
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=chatml_messages,
-            max_tokens=256,
+            max_tokens=300,
             temperature=0.8,
             top_p=1,
             n=1,
