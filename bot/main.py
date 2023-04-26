@@ -92,8 +92,6 @@ async def on_message(message):
             # Set the user limit based on whether the user is a moderator, booster or neither
             if is_moderator:
                 user_limit = moderator_count_limit
-            if is_moderator:
-                user_limit = moderator_count_limit
             elif is_booster:
                 user_limit = booster_count_limit
             else:
