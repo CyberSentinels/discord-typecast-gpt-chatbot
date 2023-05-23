@@ -46,7 +46,7 @@ python-dotenv==1.0.0
 python-multipart==0.0.5
 pytz==2022.7.1
 PyYAML==5.4.1
-requests==2.26.0
+requests==2.31.0
 rfc3986==1.5.0
 Rx==1.6.3
 six==1.16.0
